@@ -2,9 +2,13 @@ const express = require('express');
 
 const server = express();
 
-server.use('/user', (req, res) => {
-  console.log(req.query.name,req.query.id);
-  res.send("Advance routing technique!!");
+server.use('/user', (req, res,next) => {
+  console.log("First Route Handler!!")
+  res.send("First");
+  next();
+},(req, res) => {
+  console.log("Second Route Handler!!")
+  res.send("Second")
 });``
 
 server.listen(7777, () => {
